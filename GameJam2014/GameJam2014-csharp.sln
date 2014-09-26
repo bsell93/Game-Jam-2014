@@ -1,19 +1,23 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-
+Project("{6D5DF859-88AF-CC1D-E78E-FE7ABE863567}") = "GameJam2014", "Assembly-CSharp-vs.csproj", "{82259D58-C273-2045-8BB6-9780A0B30732}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
+		{82259D58-C273-2045-8BB6-9780A0B30732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82259D58-C273-2045-8BB6-9780A0B30732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82259D58-C273-2045-8BB6-9780A0B30732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82259D58-C273-2045-8BB6-9780A0B30732}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-						GlobalSection(MonoDevelopProperties) = preSolution
+										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

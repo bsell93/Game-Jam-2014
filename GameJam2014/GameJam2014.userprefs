@@ -1,6 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AddUnitToUnitManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UnitManager.cs" Line="7" Column="64" />
+      <File FileName="Assets/Scripts/AddUnitToUnitManager.cs" Line="15" Column="21" />
+      <File FileName="Assets/Scripts/DetectClicksAndTouches.cs" Line="56" Column="8" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AddUnitToUnitManager.cs" />
+     <Compile Include="Assets\Scripts\DetectClicksAndTouches.cs" />
      <Compile Include="Assets\Scripts\UnitManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
