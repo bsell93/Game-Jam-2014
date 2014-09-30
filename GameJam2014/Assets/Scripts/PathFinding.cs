@@ -23,11 +23,6 @@ public class PathFinding : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		float speed;
-		Vector3 lastPosition;
-
-		lastPosition = transform.position;
-
 		if(path)
 		{
 			Debug.Log(path);
@@ -36,18 +31,14 @@ public class PathFinding : MonoBehaviour
 			Quaternion rotation = Quaternion.LookRotation (relativePos);
 			transform.rotation = Quaternion.Lerp (transform.rotation, rotation, dampSpeed);
 			
-			//Debug.Log(rigidbody.velocity.magnitude < this.maxSpeed);
 			float angle = Quaternion.Angle(transform.rotation, rotation);
-			Debug.Log(angle);
 			if ((transform.position - this.targetPosition).magnitude < 5 && rigidbody.velocity.magnitude > 0) {
 				rigidbody.velocity *= this.slowDrag;
 			} else if(rigidbody.velocity.magnitude < this.maxSpeed && (angle > -this.goAngle && angle < this.goAngle)) {
-				Debug.Log("HERE1");
 				rigidbody.AddForce(transform.forward * this.acceleration);
 			}
 			if((transform.position - this.targetPosition).magnitude < 1) {
 				path = false;
-				Debug.Log("HERE");
 			}
 		}
 	}
