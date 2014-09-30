@@ -21,9 +21,11 @@ public class DetectClicksAndTouches : MonoBehaviour
 	
 	public LayerMask rightClickLayerMask;
 	public LayerMask leftClickLayerMask;
-	
+	private UnitManager uManager;
+
 	void Start()
 	{
+		uManager = GameObject.FindGameObjectWithTag("manager").GetComponent("UnitManager") as UnitManager;
 		if(detectionCamera != null)
 		{
 			_camera = detectionCamera;
@@ -77,10 +79,14 @@ public class DetectClicksAndTouches : MonoBehaviour
 					
 					//Run the Clicked() function on the clicked object
 					hit.transform.gameObject.SendMessage("Clicked", hit.point, SendMessageOptions.DontRequireReceiver);
-				}			
+				}
+				else
+				{
+					uManager.SendMessage("ClearList", SendMessageOptions.DontRequireReceiver);
+				}
 			}
 			
-			if(Input.GetMouseButtonDown(1))  //Check to see if we've clicked
+			if(Input.GetMouseButtonDown(1))  //Check to see if we've right clicked
 			{
 				//Set up our ray from screen to scene
 				ray = _camera.ScreenPointToRay(Input.mousePosition); 
@@ -96,7 +102,7 @@ public class DetectClicksAndTouches : MonoBehaviour
 					
 					//Run the Clicked() function on the clicked object
 					hit.transform.gameObject.SendMessage("RightClicked", hit.point, SendMessageOptions.DontRequireReceiver);
-				}			
+				}
 			}
 		}
 	}
