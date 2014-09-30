@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ActivateIfUnitSelected.cs" />
      <Compile Include="Assets\Scripts\AddUnitToUnitManager.cs" />
+     <Compile Include="Assets\Scripts\CameraActions.cs" />
      <Compile Include="Assets\Scripts\DetectClicksAndTouches.cs" />
      <Compile Include="Assets\Scripts\MoveOnRightClick.cs" />
      <Compile Include="Assets\Scripts\PathFinding.cs" />
