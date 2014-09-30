@@ -12,13 +12,9 @@ public class AddUnitToUnitManager : MonoBehaviour {
 
 	void Clicked(Vector3 point)
 	{
-		if (!uManager.unitManager.Contains (gameObject.transform.root.gameObject)) {
+		if (!uManager.unitManager.Contains (gameObject.transform.root.gameObject)) 
+		{
 			uManager.unitManager.Add (gameObject.transform.root.gameObject);
 		}
-	}
-
-	void Update () 
-	{
-	
 	}
 }

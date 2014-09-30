@@ -46,11 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ActivateIfUnitSelected.cs" />
      <Compile Include="Assets\Scripts\AddUnitToUnitManager.cs" />
      <Compile Include="Assets\Scripts\DetectClicksAndTouches.cs" />
      <Compile Include="Assets\Scripts\MoveOnRightClick.cs" />
      <Compile Include="Assets\Scripts\PathFinding.cs" />
      <Compile Include="Assets\Scripts\UnitManager.cs" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MoveOnRightClick : MonoBehaviour {
-	
-	public float dampSpeed = 10;
-	
+public class MoveOnRightClick : MonoBehaviour 
+{
 	private UnitManager uManager;
+
 	
 	void Start()
 	{
 		uManager = GameObject.FindGameObjectWithTag("manager").GetComponent("UnitManager") as UnitManager;
 	}
 	
-	void RightClicked (Vector3 pos)
+	void RightClicked(Vector3 position)
 	{
-		Debug.Log (pos);
-		if (uManager.unitManager.Contains (gameObject.transform.root.gameObject)) {
-			Vector3 relativePos = pos - transform.position;
-			Quaternion rotation = Quaternion.LookRotation (relativePos);
-			gameObject.transform.rotation = Quaternion.Lerp (transform.rotation, rotation, dampSpeed);
+		foreach(GameObject unit in uManager.unitManager)
+		{
+			unit.GetComponent<PathFinding>().GoTo(position);
 		}
 	}
 }
