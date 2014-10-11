@@ -3,15 +3,15 @@ using System.Collections;
 
 public class CameraActions : MonoBehaviour
 {
-	public float xMultiplier = 1.0f;
-	public float zMultiplier = 1.0f;
+	public float panSpeed = 1.0f;
+	public float rotateSpeed = 1.0f;
 	public int scrollSpeed = 5;
 
 	private bool trackLeftMouse = false;
 	private bool trackRightMouse = false;
-	private Vector3 lastState;
-	private Vector3 distance;
-	private Vector3 point;
+	private Vector3 lastState; // last state of the mouse on the screen
+	private Vector3 distance; // distance the mouse has moved on the screen
+	private Vector3 point; // the point teh camera looks at and looks around
 
 	void Start ()
 	{
@@ -22,6 +22,7 @@ public class CameraActions : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
 		if (Input.GetMouseButtonDown(0)) { // Left click, pan camera
 			this.trackLeftMouse = true;
 			this.lastState = Input.mousePosition;
@@ -30,35 +31,29 @@ public class CameraActions : MonoBehaviour
 			this.lastState = Input.mousePosition;
 		}
 
-		if (Input.GetMouseButtonUp(0)) {
+		if (Input.GetMouseButtonUp(0)) { // End pan 
 			this.trackLeftMouse = false;
-		} else if (Input.GetMouseButtonUp(1)) {
+		} else if (Input.GetMouseButtonUp(1)) { // End rotate
 			this.trackRightMouse = false;
-			Debug.Log(this.distance);
 		}
 
-		if (this.trackLeftMouse) {
-			Debug.Log("Left Click Down");
+		if (this.trackLeftMouse) {  // Pan camera
 			Vector3 currentPosition = Input.mousePosition;
-			if ((this.lastState - currentPosition).magnitude > 2) {
-				this.distance.x = (transform.position.x + ((currentPosition.x - this.lastState.x) * this.xMultiplier));
-				this.distance.z = (transform.position.z + ((currentPosition.y - this.lastState.y) * this.zMultiplier));
+			if ((this.lastState - currentPosition).magnitude > 2) { // if it is a meaningful mouse move
+				this.distance.x = (transform.position.x + ((currentPosition.x - this.lastState.x) * this.panSpeed));
+				this.distance.z = (transform.position.z + ((currentPosition.y - this.lastState.y) * this.panSpeed));
 				float lerpX = Mathf.Lerp(transform.position.x, this.distance.x, Time.deltaTime);
 				float lerpZ = Mathf.Lerp(transform.position.z, this.distance.z, Time.deltaTime);
 				transform.position = new Vector3(lerpX, transform.position.y, lerpZ);
 				this.lastState = currentPosition;
 			}
-		} else if (this.trackRightMouse) {
-			Debug.Log("Right Click Down");
+		} else if (this.trackRightMouse) { // Rotate camera
 			Vector3 currentState = Input.mousePosition;
-			Debug.Log(transform.rotation);
-			if ((this.lastState - currentState).magnitude > 2) {
+			if ((this.lastState - currentState).magnitude > 2) { // if it is a meaningful mouse move
 				this.distance.y = (transform.rotation.x + (currentState.x - this.lastState.x));
 				this.distance.x = (transform.rotation.y + (currentState.y - this.lastState.y));
-				this.distance.z = 0;
-				//Quaternion target = Quaternion.Euler(this.distance);
-				//transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime);
-				transform.RotateAround(point, this.distance, Time.deltaTime * 200);
+				transform.RotateAround(point, transform.TransformDirection(Vector3.right), this.distance.x * Time.deltaTime * rotateSpeed);
+				transform.RotateAround(point, Vector3.up, this.distance.y * Time.deltaTime * rotateSpeed);
 				this.lastState = currentState;
 			}
 		}
